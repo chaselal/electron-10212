@@ -1,9 +1,12 @@
 // Modules to control application life and create native browser window
-const {app, BrowserWindow} = require('electron')
+const {app, BrowserWindow, powerSaveBlocker} = require('electron')
 
 // Keep a global reference of the window object, if you don't, the window will
 // be closed automatically when the JavaScript object is garbage collected.
 let mainWindow
+
+// On Windows 10, this fails to prevent the computer from entering sleep mode. It does prevent the display from being turned off, though.
+powerSaveBlocker.start("prevent-display-sleep");
 
 function createWindow () {
   // Create the browser window.
